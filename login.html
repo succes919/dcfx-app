@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investment Wallet | Login</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 410px;
+      background: #151d33;
+      border: 1px solid #293653;
+      border-radius: 18px;
+      padding: 28px;
+    }
+    .brand {
+      text-align: center;
+      color: #65d5ff;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+    h1 { text-align: center; font-size: 25px; }
+    .subtitle {
+      text-align: center;
+      color: #b7c2d8;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+    label {
+      display: block;
+      margin: 15px 0 7px;
+      font-size: 14px;
+    }
+    input {
+      width: 100%;
+      padding: 13px;
+      border-radius: 8px;
+      border: 1px solid #3a4865;
+      background: #0b1020;
+      color: white;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      border: 0;
+      border-radius: 8px;
+      background: #39b8e8;
+      color: #07111e;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .switch {
+      text-align: center;
+      margin-top: 20px;
+      color: #b7c2d8;
+      font-size: 14px;
+    }
+    .switch a { color: #65d5ff; cursor: pointer; }
+    .notice {
+      display: none;
+      margin-top: 15px;
+      color: #ffd58a;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .terms {
+      font-size: 12px;
+      color: #b7c2d8;
+      line-height: 1.5;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="brand">Investment Wallet</div>
+
+    <section id="login">
+      <h1>Welcome Back</h1>
+      <p class="subtitle">Log in to your account</p>
+      <form onsubmit="showNotice(event, 'login')">
+        <label for="login-email">Email address</label>
+        <input id="login-email" type="email" autocomplete="email" required>
+
+        <label for="login-password">Password</label>
+        <input id="login-password" type="password" autocomplete="current-password" required>
+
+        <button type="submit">Log In</button>
+      </form>
+      <p class="switch">New here? <a onclick="showForm('register')">Create an account</a></p>
+    </section>
+
+    <section id="register" hidden>
+      <h1>Create Account</h1>
+      <p class="subtitle">Join Investment Wallet</p>
+      <form onsubmit="showNotice(event, 'register')">
+        <label for="full-name">Full name</label>
+        <input id="full-name" autocomplete="name" required>
+
+        <label for="register-email">Email address</label>
+        <input id="register-email" type="email" autocomplete="email" required>
+
+        <label for="register-password">Create password</label>
+        <input id="register-password" type="password" minlength="8" autocomplete="new-password" required>
+
+        <button type="submit">Create Account</button>
+      </form>
+      <p class="terms">Use a strong, unique password. Your account will need secure server-side authentication before it can be activated.</p>
+      <p class="switch">Already registered? <a onclick="showForm('login')">Log in</a></p>
+    </section>
+
+    <p id="notice" class="notice" role="status"></p>
+  </main>
+
+  <script>
+    function showForm(which) {
+      document.getElementById('login').hidden = which !== 'login';
+      document.getElementById('register').hidden = which !== 'register';
+      document.getElementById('notice').style.display = 'none';
+    }
+
+    function showNotice(event, which) {
+      event.preventDefault();
+      const notice = document.getElementById('notice');
+      notice.textContent = which === 'login'
+        ? 'The login design is ready. Secure authentication must be connected before you can sign in.'
+        : 'The registration design is ready. Secure account creation must be connected before your account can be activated.';
+      notice.style.display = 'block';
+    }
+  </script>
+</body>
+          </html>
+          
